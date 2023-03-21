@@ -19,7 +19,7 @@ Add the library to your project using Swift Package Manager:
 
 1. Open your project in Xcode.
 2. Go to File > Swift Packages > Add Package Dependency.
-3. Enter the repository URL for the SmsHubAPI library and click Next.
+3. Enter the repository URL `https://github.com/DeveloperZelentsov/SMSHubAPI` for the SmsHubAPI library and click Next.
 4. Choose the latest available version and click Next.
 5. Select the target where you want to use SmsHubAPI and click Finish.
 
