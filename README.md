@@ -52,7 +52,7 @@ do {
 ### Purchase Phone Number ###
 
 ```swift
-let getNumber = GetNumberRequest(service: "example_service", operator: "operator_name", country: "country_name")
+let getNumber = GetNumberRequest(service: .nextdoor, country: .usa)
 
 do {
     let (id, phone) = try await smsHubAPI.purchasePhoneNumber(by: getNumber)
