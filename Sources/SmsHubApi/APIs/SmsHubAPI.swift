@@ -29,7 +29,7 @@ public protocol ISmsHubAPI: AnyObject {
 }
 
 public final class SmsHubAPI: HTTPClient, ISmsHubAPI {
-    private let urlSession: URLSession
+    let urlSession: URLSession
     
     public init(apiKey: String,
                 baseScheme: String = Constants.baseScheme,

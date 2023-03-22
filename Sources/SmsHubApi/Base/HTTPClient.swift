@@ -23,7 +23,7 @@ public extension HTTPClient {
         request.httpBody = endpoint.body?.data
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await session.data(for: request)
             return handlingDataTask(data: data,
                                     response: response,
                                     error: nil,
