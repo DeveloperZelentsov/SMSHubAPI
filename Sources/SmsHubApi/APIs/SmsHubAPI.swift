@@ -34,10 +34,12 @@ public final class SmsHubAPI: HTTPClient, ISmsHubAPI {
     public init(apiKey: String,
                 baseScheme: String = Constants.baseScheme,
                 baseHost: String = Constants.baseHost,
+                path: String = Constants.path,
                 urlSession: URLSession = .shared) {
         Constants.apiKey = apiKey
-        Constants.baseHost = baseHost
         Constants.baseScheme = baseScheme
+        Constants.baseHost = baseHost
+        Constants.path = path
         self.urlSession = urlSession
     }
     

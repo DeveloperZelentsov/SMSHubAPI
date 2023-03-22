@@ -46,7 +46,7 @@ extension SmsHubEndpoint: CustomEndpoint {
     }
     
     public var path: String {
-        return ""
+        return Constants.path
     }
     
     public var method: HTTPRequestMethods {
