@@ -29,13 +29,21 @@ public protocol ISmsHubAPI: AnyObject {
 }
 
 public final class SmsHubAPI: HTTPClient, ISmsHubAPI {
-    public init(apiKey: String) {
+    private let urlSession: URLSession
+    
+    public init(apiKey: String,
+                baseScheme: String = Constants.baseScheme,
+                baseHost: String = Constants.baseHost,
+                urlSession: URLSession = .shared) {
         Constants.apiKey = apiKey
+        Constants.baseHost = baseHost
+        Constants.baseScheme = baseScheme
+        self.urlSession = urlSession
     }
     
     public func getBalance() async throws -> String {
         let endpoint = SmsHubEndpoint.getBalance
-        let result = await sendRequest(endpoint: endpoint, responseModel: String.self)
+        let result = await sendRequest(session: urlSession, endpoint: endpoint, responseModel: String.self)
         let response = try result.get()
         if let balance = response.components(separatedBy: ":").last {
             return balance
@@ -45,7 +53,7 @@ public final class SmsHubAPI: HTTPClient, ISmsHubAPI {
     
     public func purchasePhoneNumber(by getNumber: GetNumberRequest) async throws -> (Int, Int) {
         let endpoint = SmsHubEndpoint.purchasePhoneNumber(getNumber)
-        let result = await sendRequest(endpoint: endpoint, responseModel: String.self)
+        let result = await sendRequest(session: urlSession, endpoint: endpoint, responseModel: String.self)
         let response = try result.get()
         let components = response.components(separatedBy: ":")
         if components.count == 3,
@@ -58,7 +66,7 @@ public final class SmsHubAPI: HTTPClient, ISmsHubAPI {
     
     public func setStatus(id: Int, status: ActivationStatus) async throws -> SetStatusResponse {
         let endpoint = SmsHubEndpoint.setStatus(id: id, status: status)
-        let result = await sendRequest(endpoint: endpoint, responseModel: String.self)
+        let result = await sendRequest(session: urlSession, endpoint: endpoint, responseModel: String.self)
         let response = try result.get()
         if let status = SetStatusResponse(rawValue: response) {
             return status
@@ -68,7 +76,7 @@ public final class SmsHubAPI: HTTPClient, ISmsHubAPI {
     
     public func getStatus(id: Int) async throws -> (GetStatusResponse, String?) {
         let endpoint = SmsHubEndpoint.getStatus(id: id)
-        let result = await sendRequest(endpoint: endpoint, responseModel: String.self)
+        let result = await sendRequest(session: urlSession, endpoint: endpoint, responseModel: String.self)
         let response = try result.get()
         let components = response.components(separatedBy: ":")
         if components.count == 2,
