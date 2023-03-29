@@ -16,7 +16,9 @@ public enum SMSHubError: String, LocalizedError, CaseIterable {
     case wrongService = "WRONG_SERVICE"
     case badService = "BAD_SERVICE"
     case noActivation = "NO_ACTIVATION"
-    case badAnswer = ""
+    case badAnswer = "badAnswer"
+    case noCodeReceived = "noCodeReceived"
+    case activationCancelled = "activationCancelled"
 
     public var errorDescription: String? {
         switch self {
@@ -38,6 +40,10 @@ public enum SMSHubError: String, LocalizedError, CaseIterable {
             return "Activation ID does not exist"
         case .badAnswer:
             return "Incorrect answer"
+        case .noCodeReceived:
+            return "No code was received after the specified number of attempts."
+        case .activationCancelled:
+            return "The activation was cancelled."
         }
     }
 }

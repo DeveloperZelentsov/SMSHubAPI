@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GetNumberRequest: Encodable {
+public struct GetHubNumberRequest: Encodable {
     let service: String
     let country: Int?
     

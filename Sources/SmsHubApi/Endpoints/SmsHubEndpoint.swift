@@ -9,7 +9,7 @@ import Foundation
 
 public enum SmsHubEndpoint {
     case getBalance
-    case purchasePhoneNumber(GetNumberRequest)
+    case purchasePhoneNumber(GetHubNumberRequest)
     case setStatus(id: Int, status: ActivationStatus)
     case getStatus(id: Int)
 }
