@@ -62,6 +62,20 @@ do {
 }
 ```
 
+### Wait for Code ###
+
+The `waitForCode` method can be used to conveniently retrieve the SMS verification code for an activation. This method will repeatedly check the activation status until the code is received or the specified number of attempts is exhausted.
+
+```swift
+do {
+    let activationId = 12345
+    let code = try await smsHubAPI.waitForCode(id: activationId, attempts: 20, setStatusAfterCompletion: true)
+    print("Received code: \(code)")
+} catch {
+    print("Error: \(error)")
+}
+```
+
 ### Set Activation Status ###
 
 ```swift
