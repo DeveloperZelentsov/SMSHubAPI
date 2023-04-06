@@ -2,6 +2,8 @@
 
 SmsHubAPI is a Swift library that provides an easy-to-use interface for interacting with the SmsHub API. With this library, you can access various [SmsHub services](https://smshub.org/en/main), such as getting your account balance, purchasing a phone number, setting and retrieving the status of an activation, and more.
 
+[![Buy me a coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/zelentsov)
+
 ## Features ##
 
 * Swift concurrency support with async/await
